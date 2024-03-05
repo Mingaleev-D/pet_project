@@ -25,6 +25,11 @@ class _MovieListPageState extends State<MovieListPage> {
     setState(() {});
   }
 
+  void _onMovieTab(int index) {
+    Navigator.of(context)
+        .pushNamed('/movie_detail', arguments: movies[index].id);
+  }
+
   @override
   void initState() {
     searchMovie();
@@ -64,11 +69,8 @@ class _MovieListPageState extends State<MovieListPage> {
                       clipBehavior: Clip.hardEdge,
                       child: Row(
                         children: [
-                          Image.network(
+                          Image.asset(
                             _filteredMovies[index].imageUrl,
-                            width: MediaQuery.of(context).size.width * 0.21,
-                            height: MediaQuery.of(context).size.height,
-                            fit: BoxFit.cover,
                           ),
                           const SizedBox(width: 15),
                           Expanded(
@@ -107,7 +109,7 @@ class _MovieListPageState extends State<MovieListPage> {
                       color: Colors.transparent,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(10.0),
-                        onTap: () {},
+                        onTap: () => _onMovieTab(index),
                       ),
                     )
                   ],
