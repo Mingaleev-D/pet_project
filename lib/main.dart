@@ -12,7 +12,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          backgroundColor: Colors.green,
+          titleTextStyle: TextStyle(color: Colors.white),
+        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+      ),
       home: const Auth(),
     );
   }
