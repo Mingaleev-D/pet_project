@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 const baseStringAuth =
     'Чтобы пользоваться правкой и возможностями рейтинга TMDB, а также получить персональные рекомендации, необходимо войти в свою учётную запись. Если у вас нет учётной записи, её регистрация является бесплатной и простой. ';
 
-class Auth extends StatefulWidget {
-  const Auth({super.key});
+class AuthPage extends StatefulWidget {
+  const AuthPage({super.key});
 
   @override
-  State<Auth> createState() => _AuthState();
+  State<AuthPage> createState() => _AuthPageState();
 }
 
-class _AuthState extends State<Auth> {
+class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +47,8 @@ class _FormWidget extends StatefulWidget {
 }
 
 class _FormWidgetState extends State<_FormWidget> {
-  final _loginTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
+  final _loginTextController = TextEditingController(text: 'admin');
+  final _passwordTextController = TextEditingController(text: 'admin');
   String? errorText = '';
 
   void _auth() {
@@ -57,6 +57,7 @@ class _FormWidgetState extends State<_FormWidget> {
     if (login == 'admin' && pass == 'admin') {
       errorText = null;
       print('open app');
+      Navigator.of(context).pushNamedAndRemoveUntil('/main', (route) => false);
     } else {
       errorText = 'Неверный логин или пароль';
       print('error');

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_project/ui/widgets/auth/auth.dart';
+import 'package:pet_project/ui/auth/auth_page.dart';
+import 'package:pet_project/ui/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,12 @@ class MyApp extends StatelessWidget {
         ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
-      home: const Auth(),
+      initialRoute: '/main',
+      //  home: const Auth(),
+      routes: {
+        '/auth': (context) => const AuthPage(),
+        '/main': (context) => const MainPage(),
+      },
     );
   }
 }
